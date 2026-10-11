@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="BND.FORM: кастомные ремешки для WHOOP 5.0 и MG. Instagram, TikTok, Telegram.">
+<title>BND.FORM</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@500;700&display=swap">
+<style>
+/* Layout: one centered column, three full-width link rows under the wordmark, dark gradient ground matching the QR card */
+:root {
+  --bg: #05050c;
+  --bg-glow-a: #1b2a8a;
+  --bg-glow-b: #4a1a8c;
+  --fg: #f4f3fb;
+  --muted: #9a98b8;
+  --row: #0e0e1c;
+  --row-line: #2a2a4a;
+  --accent: #6d5cff;
+  --font-display: "Unbounded", "Arial Black", sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  color-scheme: dark;
+}
+html, body { min-height: 100%; }
+body {
+  background:
+    radial-gradient(60% 40% at 15% 0%, color-mix(in srgb, var(--bg-glow-a) 55%, transparent), transparent 70%),
+    radial-gradient(60% 40% at 90% 100%, color-mix(in srgb, var(--bg-glow-b) 55%, transparent), transparent 70%),
+    var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  padding-inline: 16px;
+  padding-block: 40px;
+  display: flex;
+  justify-content: center;
+}
+main { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 32px; }
+header { display: flex; flex-direction: column; gap: 10px; }
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+h1 span { color: var(--accent); }
+header p { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.4; }
+nav { display: flex; flex-direction: column; gap: 12px; }
+a.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  padding: 18px 20px;
+  border: 1px solid var(--row-line);
+  border-radius: 20px;
+  background: var(--row);
+  color: var(--fg);
+  text-decoration: none;
+  transition: border-color .15s, transform .15s, background .15s;
+}
+a.link:hover, a.link:focus-visible { border-color: var(--accent); background: #14142a; transform: translateY(-1px); outline: none; }
+a.link:focus-visible { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent); }
+.name { font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; }
+.handle { display: block; margin-top: 4px; font-size: .85rem; color: var(--muted); font-weight: 500; overflow-wrap: anywhere; }
+.arrow { flex: none; font-size: 1.3rem; color: var(--accent); }
+footer { color: var(--muted); font-size: .8rem; }
+@media (prefers-reduced-motion: reduce) { a.link { transition: none; } }
+</style>
+<style>html,body{margin:0}</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>BND<span>.</span>FORM</h1>
+    <p>Кастомные ремешки для WHOOP 5.0 и MG. Выберите, где нас смотреть.</p>
+  </header>
+  <nav>
+    <a class="link" href="https://www.instagram.com/bnd.form" target="_blank" rel="noopener">
+      <div><span class="name">Instagram</span><span class="handle">@bnd.form</span></div>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="link" href="https://www.tiktok.com/@bnd.form" target="_blank" rel="noopener">
+      <div><span class="name">TikTok</span><span class="handle">@bnd.form</span></div>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="link" href="https://t.me/bndform" target="_blank" rel="noopener">
+      <div><span class="name">Telegram</span><span class="handle">@bndform</span></div>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </nav>
+  <footer>BND.FORM не связан с WHOOP, Inc.</footer>
+</main>
+</body>
+</html>
