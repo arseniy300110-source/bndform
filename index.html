@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="BND.FORM — кастомные ремешки для WHOOP 5.0 и MG. Соберите свой ремешок и закажите в Telegram.">
+<meta name="description" content="BND.FORM — ремешки SuperKnit и CoreKnit для WHOOP 5.0 и MG во всех цветах. Заказ в Telegram.">
 <meta name="theme-color" content="#05050c">
 <meta property="og:title" content="BND.FORM — кастомные ремешки для WHOOP">
 <meta property="og:description" content="Кастомные ремешки для WHOOP 5.0 и MG. Заказ в Telegram.">
@@ -28,7 +28,9 @@
   --font-display: "Unbounded", "Arial Black", sans-serif;
   --font-body: "Manrope", system-ui, sans-serif;
   --radius: 22px;
-  --strap: #6d5cff;
+  --photo-bg: #f5f5f5;
+  --photo-tag: #11111b;
+  --photo-tag-fg: #f4f3fb;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -99,21 +101,21 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 
 .stage {
   position: relative; aspect-ratio: 1; max-width: 460px; width: 100%; justify-self: center;
-  border-radius: 40px;
-  background: radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--strap) 35%, transparent), transparent 62%), var(--surface);
+  border-radius: 32px; margin: 0;
+  background: var(--photo-bg);
   border: 1px solid var(--line);
   display: grid; place-items: center; overflow: hidden;
-  transition: background .4s;
 }
-.stage::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 39px, color-mix(in srgb, var(--line) 35%, transparent) 39px 40px); mask: radial-gradient(circle, transparent 30%, #000 80%); pointer-events: none; }
-.stage svg { width: 72%; height: auto; filter: drop-shadow(0 30px 40px rgba(0,0,0,.55)); animation: float 6s ease-in-out infinite; }
+.stage img { width: 86%; height: 86%; object-fit: contain; transition: opacity .25s ease; }
+.stage img.loading { opacity: .35; }
+.hero .stage img { animation: float 6s ease-in-out infinite; }
 .tag {
   position: absolute; padding: 8px 12px; border-radius: 999px; font-size: .78rem; font-weight: 700;
-  background: color-mix(in srgb, var(--bg) 75%, transparent); border: 1px solid var(--line); backdrop-filter: blur(6px);
+  background: var(--photo-tag); color: var(--photo-tag-fg);
 }
 .tag.t1 { top: 22px; left: 22px; }
 .tag.t2 { bottom: 22px; right: 22px; }
-@keyframes float { 0%,100% { transform: translateY(0) rotate(-8deg); } 50% { transform: translateY(-10px) rotate(-6deg); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
 /* Marquee */
 .ticker { border-block: 1px solid var(--line); overflow: hidden; background: var(--surface); }
@@ -142,15 +144,21 @@ section.block { padding: 88px 0; }
 .opt-group { margin-bottom: 28px; }
 .opt-group h3 { font-size: .9rem; margin-bottom: 14px; font-family: var(--font-body); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
 .opt-group h3 b { color: var(--fg); text-transform: none; letter-spacing: 0; margin-left: 6px; }
-.swatches { display: flex; flex-wrap: wrap; gap: 12px; }
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 14px 8px; }
 .swatch {
-  width: 44px; height: 44px; border-radius: 50%; cursor: pointer; padding: 0;
-  border: 2px solid var(--line); background: var(--c);
-  box-shadow: inset 0 0 0 3px var(--bg);
+  display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0;
+  padding: 0; background: none; border: 0; cursor: pointer; color: var(--muted);
+  font: 500 .8rem/1.2 var(--font-body); text-align: center;
+}
+.swatch i {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--c);
+  border: 2px solid var(--line); box-shadow: inset 0 0 0 3px var(--bg);
   transition: transform .15s, border-color .15s;
 }
-.swatch:hover { transform: scale(1.06); }
-.swatch[aria-pressed="true"] { border-color: var(--fg); }
+.swatch:hover i { transform: scale(1.06); }
+.swatch[aria-pressed="true"] { color: var(--fg); font-weight: 700; }
+.swatch[aria-pressed="true"] i { border-color: var(--fg); }
+.note { color: var(--muted); font-size: .82rem; margin: 14px 0 0; }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; }
 .chip {
   padding: 11px 16px; border-radius: 999px; cursor: pointer;
@@ -214,44 +222,13 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
 </head>
 <body>
 
-<!-- Reusable strap drawing: colours come from CSS vars set on the parent .stage -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <linearGradient id="g-sheen" x1="0" x2="1">
-      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
-      <stop offset=".45" stop-color="#fff" stop-opacity=".18"/>
-      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
-    </linearGradient>
-    <symbol id="strap" viewBox="0 0 200 420">
-      <!-- band -->
-      <rect x="58" y="6" width="84" height="408" rx="38" style="fill:var(--strap)"/>
-      <rect x="58" y="6" width="84" height="408" rx="38" fill="url(#g-sheen)"/>
-      <g class="texture" style="opacity:var(--tex-o,0)">
-        <path d="M66 40h68M66 60h68M66 80h68M66 100h68M66 120h68M66 300h68M66 320h68M66 340h68M66 360h68M66 380h68" stroke="#000" stroke-opacity=".22" stroke-width="3" stroke-linecap="round"/>
-      </g>
-      <g style="opacity:var(--holes-o,1)">
-        <circle cx="100" cy="330" r="5" fill="#000" fill-opacity=".35"/>
-        <circle cx="100" cy="355" r="5" fill="#000" fill-opacity=".35"/>
-        <circle cx="100" cy="380" r="5" fill="#000" fill-opacity=".35"/>
-      </g>
-      <!-- buckle / clasp -->
-      <rect x="52" y="40" width="96" height="22" rx="8" fill="none" style="stroke:var(--hw)" stroke-width="6"/>
-      <!-- sensor pod -->
-      <rect x="40" y="150" width="120" height="120" rx="30" fill="#0b0b12"/>
-      <rect x="40" y="150" width="120" height="120" rx="30" fill="none" stroke="#2c2c40" stroke-width="3"/>
-      <rect x="52" y="162" width="96" height="96" rx="22" fill="#11111b"/>
-      <rect x="40" y="200" width="6" height="20" rx="3" style="fill:var(--hw)"/>
-      <rect x="154" y="200" width="6" height="20" rx="3" style="fill:var(--hw)"/>
-    </symbol>
-  </defs>
-</svg>
 
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#top">BND<span class="dot">.</span>FORM</a>
     <nav class="menu" aria-label="Разделы">
       <a href="#about">О нас</a>
-      <a href="#builder">Конструктор</a>
+      <a href="#builder">Ремешки</a>
       <a href="#order">Как заказать</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -265,9 +242,9 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
       <div>
         <p class="eyebrow">Ремешки для WHOOP 5.0 и MG</p>
         <h1>Твой WHOOP.<br><em>Твоя форма.</em></h1>
-        <p class="lead">BND.FORM делает кастомные ремешки: выбираешь цвет, материал и фурнитуру — мы собираем ремешок под тебя.</p>
+        <p class="lead">Ремешки SuperKnit и CoreKnit для WHOOP 5.0 и MG во всех цветах. Выбираешь модель и цвет — оформляем заказ в Telegram.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#builder">Собрать ремешок</a>
+          <a class="btn btn-primary" href="#builder">Выбрать ремешок</a>
           <a class="btn btn-ghost" href="https://t.me/bndform" target="_blank" rel="noopener">Написать в Telegram</a>
         </div>
         <div class="hero-social">
@@ -276,18 +253,18 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
           <a href="https://t.me/bndform" target="_blank" rel="noopener">Telegram</a>
         </div>
       </div>
-      <div class="stage" style="--strap:#6d5cff;--hw:#c9c9d6" aria-hidden="true">
-        <svg viewBox="0 0 200 420"><use href="#strap"/></svg>
+      <figure class="stage">
+        <img src="img/bands/superknit-graphite.jpg" alt="Ремешок SuperKnit Graphite для WHOOP" width="900" height="735">
         <span class="tag t1">WHOOP 5.0 · MG</span>
-        <span class="tag t2">Custom made</span>
-      </div>
+        <span class="tag t2">SuperKnit · CoreKnit</span>
+      </figure>
     </div>
   </section>
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>Кастом</span><span>WHOOP 5.0</span><span>WHOOP MG</span><span>Свой цвет</span><span>Ручная сборка</span><span>BND.FORM</span>
-      <span>Кастом</span><span>WHOOP 5.0</span><span>WHOOP MG</span><span>Свой цвет</span><span>Ручная сборка</span><span>BND.FORM</span>
+      <span>SuperKnit</span><span>WHOOP 5.0</span><span>CoreKnit</span><span>WHOOP MG</span><span>19 цветов</span><span>BND.FORM</span>
+      <span>SuperKnit</span><span>WHOOP 5.0</span><span>CoreKnit</span><span>WHOOP MG</span><span>19 цветов</span><span>BND.FORM</span>
     </div>
   </div>
 
@@ -300,7 +277,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
         <article class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18M3 12h18"/></svg></div>
           <h3>Под тебя</h3>
-          <p>Цвет, материал и фурнитура — собираешь свою комбинацию, а не выбираешь из трёх стандартных.</p>
+          <p>SuperKnit или CoreKnit, 19 цветов и обе модели трекера: выбираешь свою комбинацию.</p>
         </article>
         <article class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="5"/><rect x="5" y="8" width="14" height="8" rx="3"/></svg></div>
@@ -309,8 +286,8 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
         </article>
         <article class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 .9-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.9z"/></svg></div>
-          <h3>Ручная сборка</h3>
-          <p>Каждый ремешок собираем и проверяем вручную перед отправкой.</p>
+          <h3>Проверка</h3>
+          <p>Каждый ремешок проверяем перед отправкой и присылаем фото.</p>
         </article>
         <article class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3.5-7.1L21 3v6h-6"/></svg></div>
@@ -323,15 +300,16 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
 
   <section class="block" id="builder" style="padding-top:0">
     <div class="wrap">
-      <p class="eyebrow reveal">Конструктор</p>
-      <h2 class="reveal">Собери свой ремешок<span class="dot">.</span></h2>
-      <p class="lead reveal">Выбери параметры — мы подготовим текст заказа, останется отправить его нам в Telegram.</p>
+      <p class="eyebrow reveal">Ремешки</p>
+      <h2 class="reveal">Выбери ремешок<span class="dot">.</span></h2>
+      <p class="lead reveal">SuperKnit и CoreKnit для WHOOP 5.0 и MG. Выбери тип и цвет — мы подготовим текст заказа для Telegram.</p>
 
       <div class="config">
-        <div class="stage" id="preview" style="--strap:#6d5cff;--hw:#c9c9d6" aria-hidden="true">
-          <svg viewBox="0 0 200 420"><use href="#strap"/></svg>
+        <figure class="stage" id="preview">
+          <img id="band-img" src="img/bands/superknit-graphite.jpg" alt="SuperKnit Graphite" width="900" height="735">
           <span class="tag t1" id="tag-model">WHOOP 5.0</span>
-        </div>
+          <span class="tag t2" id="tag-band">SuperKnit · Graphite</span>
+        </figure>
 
         <div>
           <div class="opt-group">
@@ -343,40 +321,22 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
           </div>
 
           <div class="opt-group">
-            <h3>Цвет <b id="lbl-color">Фиолетовый</b></h3>
-            <div class="swatches" data-group="color">
-              <button class="swatch" type="button" style="--c:#6d5cff" data-value="Фиолетовый" data-hex="#6d5cff" aria-pressed="true" aria-label="Фиолетовый"></button>
-              <button class="swatch" type="button" style="--c:#141418" data-value="Чёрный" data-hex="#1c1c22" aria-pressed="false" aria-label="Чёрный"></button>
-              <button class="swatch" type="button" style="--c:#e9e6dd" data-value="Молочный" data-hex="#e9e6dd" aria-pressed="false" aria-label="Молочный"></button>
-              <button class="swatch" type="button" style="--c:#2f6bff" data-value="Синий" data-hex="#2f6bff" aria-pressed="false" aria-label="Синий"></button>
-              <button class="swatch" type="button" style="--c:#2e7d57" data-value="Зелёный" data-hex="#2e7d57" aria-pressed="false" aria-label="Зелёный"></button>
-              <button class="swatch" type="button" style="--c:#ff5a3c" data-value="Оранжевый" data-hex="#ff5a3c" aria-pressed="false" aria-label="Оранжевый"></button>
-              <button class="swatch" type="button" style="--c:#ff7eb6" data-value="Розовый" data-hex="#ff7eb6" aria-pressed="false" aria-label="Розовый"></button>
-              <button class="swatch" type="button" style="--c:#8a6b4a" data-value="Коричневый" data-hex="#8a6b4a" aria-pressed="false" aria-label="Коричневый"></button>
+            <h3>Ремешок <b id="lbl-type">SuperKnit</b></h3>
+            <div class="chips" data-group="type">
+              <button class="chip" type="button" data-value="SuperKnit" aria-pressed="true">SuperKnit</button>
+              <button class="chip" type="button" data-value="CoreKnit" aria-pressed="false">CoreKnit</button>
             </div>
           </div>
 
           <div class="opt-group">
-            <h3>Материал <b id="lbl-material">Силикон</b></h3>
-            <div class="chips" data-group="material">
-              <button class="chip" type="button" data-value="Силикон" data-tex="0" data-holes="1" aria-pressed="true">Силикон</button>
-              <button class="chip" type="button" data-value="Нейлон" data-tex="1" data-holes="0" aria-pressed="false">Нейлон</button>
-              <button class="chip" type="button" data-value="Кожа" data-tex="0" data-holes="1" aria-pressed="false">Кожа</button>
-            </div>
-          </div>
-
-          <div class="opt-group">
-            <h3>Фурнитура <b id="lbl-hw">Серебро</b></h3>
-            <div class="chips" data-group="hw">
-              <button class="chip" type="button" data-value="Серебро" data-hex="#c9c9d6" aria-pressed="true">Серебро</button>
-              <button class="chip" type="button" data-value="Чёрная" data-hex="#3a3a46" aria-pressed="false">Чёрная</button>
-              <button class="chip" type="button" data-value="Золото" data-hex="#d8b765" aria-pressed="false">Золото</button>
-            </div>
+            <h3>Цвет <b id="lbl-color">Graphite</b> <span id="lbl-count" style="font-weight:500;text-transform:none;letter-spacing:0"></span></h3>
+            <div class="swatches" id="swatches"></div>
+            <p class="note" id="photo-note" hidden>Это превью цвета, реальный оттенок может отличаться. Фото живого ремешка пришлём в Telegram.</p>
           </div>
 
           <div class="summary">
             <p>Твой заказ</p>
-            <output id="order-text">WHOOP 5.0 · Фиолетовый · Силикон · Серебро</output>
+            <output id="order-text">WHOOP 5.0 · SuperKnit · Graphite</output>
             <div class="row">
               <a class="btn btn-primary" id="send" href="https://t.me/bndform" target="_blank" rel="noopener">Отправить в Telegram</a>
               <button class="btn btn-ghost" type="button" id="copy">Скопировать</button>
@@ -394,8 +354,8 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
       <h2 class="reveal">Три шага<span class="dot">.</span></h2>
       <div class="steps">
         <article class="card step reveal">
-          <h3>Собери</h3>
-          <p>Выбери модель, цвет, материал и фурнитуру в конструкторе — или просто опиши идею своими словами.</p>
+          <h3>Выбери</h3>
+          <p>Выбери модель WHOOP, тип ремешка (SuperKnit или CoreKnit) и цвет в каталоге выше.</p>
         </article>
         <article class="card step reveal">
           <h3>Напиши нам</h3>
@@ -403,7 +363,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
         </article>
         <article class="card step reveal">
           <h3>Получи</h3>
-          <p>Собираем ремешок, присылаем фото готовой работы и отправляем удобной тебе доставкой.</p>
+          <p>Присылаем фото ремешка и отправляем удобной тебе доставкой.</p>
         </article>
       </div>
     </div>
@@ -423,8 +383,8 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
           <p>Цена и срок зависят от материала и сложности кастома. Напиши в Telegram с выбранной комбинацией — назовём точную стоимость и дату готовности.</p>
         </details>
         <details class="reveal">
-          <summary>Можно сделать цвет или дизайн, которого нет в конструкторе?</summary>
-          <p>Да. Конструктор — только отправная точка. Пришли референс или опиши идею, и мы обсудим, что можно сделать.</p>
+          <summary>Чем SuperKnit отличается от CoreKnit?</summary>
+          <p>Это две линейки тканевых ремешков WHOOP с разной вязкой и разной палитрой: у SuperKnit 15 цветов, у CoreKnit 4. Не можешь выбрать — напиши нам, пришлём живые фото обоих.</p>
         </details>
         <details class="reveal">
           <summary>Как подобрать размер?</summary>
@@ -472,15 +432,70 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
 
 <script>
 (() => {
-  const state = { model: "WHOOP 5.0", color: "Фиолетовый", material: "Силикон", hw: "Серебро" };
-  const preview = document.getElementById("preview");
-  const heroStage = document.querySelector(".hero .stage");
-  const out = document.getElementById("order-text");
-  const hint = document.getElementById("hint");
-  const labels = { model: "lbl-model", color: "lbl-color", material: "lbl-material", hw: "lbl-hw" };
+  // photo: true = real product photo; false = colour preview generated from the Glacier photo
+  const BANDS = {
+    SuperKnit: [
+      ["Obsidian",   "#111113", "superknit-obsidian", true],
+      ["Graphite",   "#55575c", "superknit-graphite", true],
+      ["Glacier",    "#eef0f1", "superknit-glacier", true],
+      ["Midnight",   "#1d2538", "superknit-midnight"],
+      ["Slate",      "#5f6b75", "superknit-slate"],
+      ["Reflective", "#b9bcc0", "superknit-reflective"],
+      ["Eclipse",    "#3a2f4f", "superknit-eclipse"],
+      ["Solar",      "#e8a93a", "superknit-solar"],
+      ["Blush",      "#e2b2ac", "superknit-blush"],
+      ["Coffee",     "#4e3a2e", "superknit-coffee"],
+      ["Maple",      "#a8552c", "superknit-maple"],
+      ["Dune",       "#cdb791", "superknit-dune"],
+      ["Grotto",     "#2e6467", "superknit-grotto"],
+      ["Forest",     "#2c4433", "superknit-forest"],
+      ["Tide",       "#3b6d93", "superknit-tide"],
+    ],
+    CoreKnit: [
+      ["Jet Black",  "#1a1a1a", "coreknit-jet-black"],
+      ["Ash Grey",   "#8e9195", "coreknit-ash-grey"],
+      ["Royal Blue", "#2b4ea3", "coreknit-royal-blue"],
+      ["Evergreen",  "#24463a", "coreknit-evergreen"],
+    ],
+  };
+  const state = { model: "WHOOP 5.0", type: "SuperKnit", color: "Graphite" };
+  const $ = id => document.getElementById(id);
+  const img = $("band-img"), out = $("order-text"), hint = $("hint"), sw = $("swatches");
 
-  const text = () => `${state.model} · ${state.color} · ${state.material} · ${state.hw}`;
-  const message = () => `Здравствуйте! Хочу заказать ремешок BND.FORM: ${text()}. Обхват запястья: `;
+  const text = () => `${state.model} · ${state.type} · ${state.color}`;
+  const message = () => `Здравствуйте! Хочу заказать ремешок: ${text()}. Обхват запястья: `;
+
+  function showColor(band) {
+    const [name, , file, photo] = band;
+    state.color = name;
+    $("lbl-color").textContent = name;
+    $("tag-band").textContent = `${state.type} · ${name}`;
+    $("photo-note").hidden = !!photo;
+    sw.querySelectorAll(".swatch").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.value === name)));
+    const src = `img/bands/${file}.jpg`;
+    if (!img.src.endsWith(src)) {
+      img.classList.add("loading");
+      img.onload = () => img.classList.remove("loading");
+      img.src = src;
+      img.alt = `${state.type} ${name}`;
+    }
+    out.textContent = text();
+    hint.textContent = "";
+  }
+
+  function renderSwatches() {
+    const list = BANDS[state.type];
+    $("lbl-count").textContent = `· ${list.length} цветов`.replace("4 цветов", "4 цвета");
+    sw.innerHTML = "";
+    list.forEach(band => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "swatch"; b.dataset.value = band[0];
+      b.innerHTML = `<i style="--c:${band[1]}"></i><span>${band[0]}</span>`;
+      b.addEventListener("click", () => showColor(band));
+      sw.appendChild(b);
+    });
+    showColor(list.find(b => b[0] === state.color) || list[0]);
+  }
 
   document.querySelectorAll("[data-group]").forEach(group => {
     const key = group.dataset.group;
@@ -489,15 +504,18 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
       if (!btn) return;
       group.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
       state[key] = btn.dataset.value;
-      document.getElementById(labels[key]).textContent = btn.dataset.value;
-      if (key === "color") { preview.style.setProperty("--strap", btn.dataset.hex); heroStage.style.setProperty("--strap", btn.dataset.hex); }
-      if (key === "hw") { preview.style.setProperty("--hw", btn.dataset.hex); heroStage.style.setProperty("--hw", btn.dataset.hex); }
-      if (key === "material") { preview.style.setProperty("--tex-o", btn.dataset.tex); preview.style.setProperty("--holes-o", btn.dataset.holes); }
-      if (key === "model") document.getElementById("tag-model").textContent = btn.dataset.value;
+      $("lbl-" + key).textContent = btn.dataset.value;
+      if (key === "model") $("tag-model").textContent = btn.dataset.value;
+      if (key === "type") renderSwatches();
       out.textContent = text();
       hint.textContent = "";
     });
   });
+
+  renderSwatches();
+
+  // warm the cache so switching colours feels instant
+  window.addEventListener("load", () => Object.values(BANDS).flat().forEach(b => { new Image().src = `img/bands/${b[2]}.jpg`; }));
 
   async function copy() {
     try { await navigator.clipboard.writeText(message()); return true; }
