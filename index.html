@@ -49,8 +49,8 @@ body {
 }
 a { color: inherit; }
 img, svg { display: block; max-width: 100%; }
-.wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: 16px; }
-@media (min-width: 720px) { .wrap { padding-inline: 32px; } }
+.wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 720px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
 
 h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; margin: 0; line-height: 1.05; }
 .dot { color: var(--accent); }
@@ -59,7 +59,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 
 /* Header */
 .top {
-  position: sticky; top: 0; z-index: 10;
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   background: color-mix(in srgb, var(--bg) 70%, transparent);
   border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
@@ -378,7 +378,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
             <p>Твой заказ</p>
             <output id="order-text">WHOOP 5.0 · Фиолетовый · Силикон · Серебро</output>
             <div class="row">
-              <button class="btn btn-primary" type="button" id="send">Отправить в Telegram</button>
+              <a class="btn btn-primary" id="send" href="https://t.me/bndform" target="_blank" rel="noopener">Отправить в Telegram</a>
               <button class="btn btn-ghost" type="button" id="copy">Скопировать</button>
             </div>
             <p class="hint" id="hint" role="status"></p>
@@ -510,8 +510,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
 
   document.getElementById("send").addEventListener("click", async () => {
     const ok = await copy();
-    hint.textContent = ok ? "Текст заказа скопирован — вставь его в чат с @bndform." : "Открываем Telegram — напиши нам выбранную комбинацию.";
-    window.open("https://t.me/bndform", "_blank", "noopener");
+    hint.textContent = ok ? "Текст заказа скопирован — вставь его в чат с @bndform." : "Напиши нам в Telegram выбранную комбинацию.";
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
