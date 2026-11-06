@@ -3,46 +3,47 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="BND.FORM — ремешки CoreKnit, SuperKnit и SuperKnit Luxe для WHOOP 5.0 и MG. 23 цвета, заказ в Telegram.">
-<meta name="theme-color" content="#05050c">
-<meta property="og:title" content="BND.FORM — кастомные ремешки для WHOOP">
-<meta property="og:description" content="Кастомные ремешки для WHOOP 5.0 и MG. Заказ в Telegram.">
+<meta name="description" content="BND.FORM — ремешки CoreKnit, SuperKnit и SuperKnit Luxe для WHOOP 5.0 и MG. 23 цвета, заказ через менеджера в Telegram.">
+<meta name="theme-color" content="#1a1a1a">
+<meta property="og:title" content="BND.FORM — ремешки для WHOOP 5.0 и MG">
+<meta property="og:description" content="CoreKnit, SuperKnit и SuperKnit Luxe. 23 цвета, заказ в Telegram.">
 <meta property="og:type" content="website">
 <title>BND.FORM</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305050c'/%3E%3Crect x='22' y='6' width='20' height='52' rx='10' fill='%236d5cff'/%3E%3Crect x='18' y='22' width='28' height='20' rx='6' fill='%23f4f3fb'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a1a1a'/%3E%3Crect x='22' y='6' width='20' height='52' rx='10' fill='%239a948a'/%3E%3Crect x='18' y='22' width='28' height='20' rx='6' fill='%23f4f4f2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&display=swap">
 <style>
+/* 60 / 30 / 10: graphite #1A1A1A carries the page, off-white #F4F4F2 takes the catalog and
+   ordering bands plus all text on dark, warm stone #9A948A marks only actions and small accents. */
 :root {
-  --bg: #05050c;
-  --bg-glow-a: #1b2a8a;
-  --bg-glow-b: #4a1a8c;
-  --fg: #f4f3fb;
-  --muted: #9a98b8;
-  --surface: #0e0e1c;
-  --surface-2: #14142a;
-  --line: #2a2a4a;
-  --accent: #6d5cff;
-  --accent-2: #a99dff;
+  --ink: #1a1a1a;          /* 60 */
+  --paper: #f4f4f2;        /* 30 */
+  --stone: #9a948a;        /* 10 */
+
+  --ink-2: #222221;        /* surfaces on dark */
+  --ink-3: #2b2b29;
+  --ink-line: #34332f;
+  --ink-muted: #a8a6a0;    /* secondary text on dark */
+  --paper-2: #eae9e4;      /* surfaces on light */
+  --paper-line: #d9d7d0;
+  --paper-muted: #5f5c56;  /* secondary text on light */
+  --stone-hi: #aca69b;
+  --stone-lo: #8a8479;
+  --stone-ink: #6f6a61;    /* stone dark enough for text on paper */
+  --photo: #f5f5f5;        /* background baked into the band photos */
+
   --font-display: "Unbounded", "Arial Black", sans-serif;
   --font-body: "Manrope", system-ui, sans-serif;
   --radius: 22px;
-  --photo-bg: #f5f5f5;
-  --photo-tag: #11111b;
-  --photo-tag-fg: #f4f3fb;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 html, body { margin: 0; }
 body {
-  background:
-    radial-gradient(70% 45% at 10% 0%, color-mix(in srgb, var(--bg-glow-a) 50%, transparent), transparent 70%),
-    radial-gradient(60% 40% at 95% 60%, color-mix(in srgb, var(--bg-glow-b) 40%, transparent), transparent 70%),
-    var(--bg);
-  background-attachment: fixed;
-  color: var(--fg);
+  background: var(--ink);
+  color: var(--paper);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.55;
@@ -54,159 +55,200 @@ img, svg { display: block; max-width: 100%; }
 .wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 @media (min-width: 720px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
 
-h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; margin: 0; line-height: 1.05; }
-.dot { color: var(--accent); }
-.eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-2); margin: 0 0 14px; }
-.lead { color: var(--muted); font-size: 1.08rem; max-width: 52ch; margin: 18px 0 0; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; margin: 0; line-height: 1.05; text-wrap: balance; }
+.dot { color: var(--stone); }
+.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--stone); margin: 0 0 14px; }
+.lead { color: var(--ink-muted); font-size: 1.08rem; max-width: 54ch; margin: 18px 0 0; }
+
+/* Light bands (the 30%) */
+.light { background: var(--paper); color: var(--ink); }
+.light .lead { color: var(--paper-muted); }
+.light .eyebrow { color: var(--stone-ink); }
+.light .dot { color: var(--stone-ink); }
 
 /* Header */
 .top {
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  background: color-mix(in srgb, var(--bg) 70%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+  background: color-mix(in srgb, var(--ink) 86%, transparent);
+  border-bottom: 1px solid var(--ink-line);
 }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
 .logo { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.02em; }
-.menu { display: none; gap: 28px; font-size: .95rem; color: var(--muted); }
+.menu { display: none; gap: 28px; font-size: .95rem; color: var(--ink-muted); }
 .menu a { text-decoration: none; transition: color .15s; }
-.menu a:hover { color: var(--fg); }
-@media (min-width: 860px) { .menu { display: flex; } }
+.menu a:hover { color: var(--paper); }
+@media (min-width: 900px) { .menu { display: flex; } }
 
+/* Buttons: the stone action colour gets a faint brushed-metal sheen */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   padding: 14px 22px; border-radius: 999px;
   font: 700 .95rem/1 var(--font-body);
   text-decoration: none; cursor: pointer; border: 1px solid transparent;
-  transition: transform .15s, background .15s, border-color .15s, box-shadow .15s;
+  transition: transform .15s, background .15s, border-color .15s, color .15s, filter .15s;
   white-space: nowrap;
 }
-.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--accent) 80%, transparent); }
-.btn-primary:hover { background: #7d6eff; transform: translateY(-1px); }
-.btn-ghost { background: transparent; color: var(--fg); border-color: var(--line); }
-.btn-ghost:hover { border-color: var(--accent); background: var(--surface-2); }
+.btn-primary { background: linear-gradient(180deg, var(--stone-hi), var(--stone-lo)); color: var(--ink); border-color: color-mix(in srgb, var(--stone-hi) 70%, #fff); }
+.btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--paper); border-color: var(--ink-line); }
+.btn-ghost:hover { border-color: var(--stone); }
+.light .btn-ghost { color: var(--ink); border-color: var(--paper-line); }
+.light .btn-ghost:hover { border-color: var(--ink); }
 .btn-sm { padding: 10px 16px; font-size: .85rem; }
-.btn:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 60%, transparent); outline-offset: 3px; }
+.btn:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid var(--stone); outline-offset: 3px; }
 
 /* Hero */
 .hero { padding: 56px 0 72px; }
 .hero .wrap { display: grid; gap: 48px; align-items: center; }
-@media (min-width: 900px) { .hero { padding: 96px 0 120px; } .hero .wrap { grid-template-columns: 1.1fr .9fr; } }
+@media (min-width: 900px) { .hero { padding: 88px 0 112px; } .hero .wrap { grid-template-columns: 1.1fr .9fr; } }
 .hero h1 { font-size: clamp(2.6rem, 9vw, 5.2rem); }
-.hero h1 em { font-style: normal; color: var(--accent-2); }
+.hero h1 em { font-style: normal; color: var(--stone); }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.hero-social { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 28px; color: var(--muted); font-size: .9rem; }
-.hero-social a { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
-.hero-social a:hover { color: var(--fg); border-color: var(--accent); }
+.hero-social { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 28px; color: var(--ink-muted); font-size: .9rem; }
+.hero-social a { text-decoration: none; border-bottom: 1px solid var(--ink-line); padding-bottom: 2px; }
+.hero-social a:hover { color: var(--paper); border-color: var(--stone); }
 
 .stage {
   position: relative; aspect-ratio: 1; max-width: 460px; width: 100%; justify-self: center;
   border-radius: 32px; margin: 0;
-  background: var(--photo-bg);
-  border: 1px solid var(--line);
+  background: var(--photo);
   display: grid; place-items: center; overflow: hidden;
 }
-.stage img { width: 86%; height: 86%; object-fit: contain; transition: opacity .25s ease; }
+.stage img { width: 88%; height: 88%; object-fit: contain; transition: opacity .25s ease; }
 .stage img.loading { opacity: .35; }
 .hero .stage img { animation: float 6s ease-in-out infinite; }
 .tag {
   position: absolute; padding: 8px 12px; border-radius: 999px; font-size: .78rem; font-weight: 700;
-  background: var(--photo-tag); color: var(--photo-tag-fg);
+  background: var(--ink); color: var(--paper);
 }
-.tag.t1 { top: 22px; left: 22px; }
-.tag.t2 { bottom: 22px; right: 22px; }
+.tag.t1 { top: 20px; left: 20px; }
+.tag.t2 { bottom: 20px; right: 20px; }
 @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-/* Marquee */
-.ticker { border-block: 1px solid var(--line); overflow: hidden; background: var(--surface); }
-.ticker-track { display: flex; gap: 40px; padding: 16px 0; width: max-content; animation: ticker 28s linear infinite; font-family: var(--font-display); font-size: .95rem; color: var(--muted); }
-.ticker-track span::after { content: "✦"; margin-left: 40px; color: var(--accent); }
+/* Ticker: the one wide stroke of accent */
+.ticker { overflow: hidden; background: var(--stone); color: var(--ink); }
+.ticker-track { display: flex; gap: 36px; padding: 14px 0; width: max-content; animation: ticker 30s linear infinite; font-family: var(--font-display); font-size: .9rem; }
+.ticker-track span::after { content: "·"; margin-left: 36px; }
 @keyframes ticker { to { transform: translateX(-50%); } }
 
 /* Sections */
 section.block { padding: 88px 0; }
-@media (min-width: 900px) { section.block { padding: 120px 0; } }
+@media (min-width: 900px) { section.block { padding: 112px 0; } }
 .block h2 { font-size: clamp(1.9rem, 5vw, 3.1rem); }
 
 .features { display: grid; gap: 16px; margin-top: 48px; }
 @media (min-width: 720px) { .features { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1000px) { .features { grid-template-columns: repeat(4, 1fr); } }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
-.card .ico { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent-2); margin-bottom: 20px; }
+.card { background: var(--ink-2); border: 1px solid var(--ink-line); border-radius: var(--radius); padding: 26px; }
+.card .ico { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: color-mix(in srgb, var(--stone) 18%, transparent); color: var(--stone); margin-bottom: 20px; }
 .card h3 { font-size: 1.05rem; margin-bottom: 10px; line-height: 1.25; }
-.card p { margin: 0; color: var(--muted); font-size: .95rem; }
+.card p { margin: 0; color: var(--ink-muted); font-size: .95rem; }
+.light .card { background: var(--paper-2); border-color: var(--paper-line); }
+.light .card p { color: var(--paper-muted); }
 
-/* Configurator */
+/* Catalog */
 .config { display: grid; gap: 32px; margin-top: 48px; }
 @media (min-width: 900px) { .config { grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; } }
-.config .stage { max-width: none; aspect-ratio: 4/3; }
+.config .stage { max-width: none; aspect-ratio: 4/3; border: 1px solid var(--paper-line); }
 @media (min-width: 900px) { .config .stage { position: sticky; top: 96px; aspect-ratio: 1; } }
 .opt-group { margin-bottom: 28px; }
-.opt-group h3 { font-size: .9rem; margin-bottom: 14px; font-family: var(--font-body); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
-.opt-group h3 b { color: var(--fg); text-transform: none; letter-spacing: 0; margin-left: 6px; }
-.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 14px 8px; }
+.opt-group h3 { font-size: .82rem; margin-bottom: 14px; font-family: var(--font-body); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--paper-muted); }
+.opt-group h3 b { color: var(--ink); text-transform: none; letter-spacing: 0; margin-left: 6px; font-size: .95rem; }
+.opt-group h3 .count { font-weight: 500; text-transform: none; letter-spacing: 0; }
+.fits { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.fit { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: .95rem; color: var(--ink); cursor: default; user-select: none; }
+.fit svg { color: var(--stone-ink); flex: none; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  padding: 11px 16px; border-radius: 999px; cursor: pointer;
+  font: 700 .9rem/1 var(--font-body); color: var(--ink);
+  background: var(--paper-2); border: 1px solid var(--paper-line);
+  transition: border-color .15s, background .15s, color .15s;
+}
+.chip:hover { border-color: var(--ink); }
+.chip[aria-pressed="true"], .chip[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 14px 8px; }
 .swatch {
   display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0;
-  padding: 0; background: none; border: 0; cursor: pointer; color: var(--muted);
+  padding: 0; background: none; border: 0; cursor: pointer; color: var(--paper-muted);
   font: 500 .8rem/1.2 var(--font-body); text-align: center;
 }
 .swatch i {
   width: 44px; height: 44px; border-radius: 50%; background: var(--c); background-clip: padding-box;
-  border: 2px solid var(--line); box-shadow: inset 0 0 0 3px var(--bg);
+  border: 2px solid var(--paper-line); box-shadow: inset 0 0 0 3px var(--paper);
   transition: transform .15s, border-color .15s;
 }
 .swatch:hover i { transform: scale(1.06); }
-.swatch[aria-pressed="true"] { color: var(--fg); font-weight: 700; }
-.swatch[aria-pressed="true"] i { border-color: var(--fg); }
-.chips { display: flex; flex-wrap: wrap; gap: 10px; }
-.chip {
-  padding: 11px 16px; border-radius: 999px; cursor: pointer;
-  font: 700 .9rem/1 var(--font-body); color: var(--fg);
-  background: var(--surface); border: 1px solid var(--line);
-  transition: border-color .15s, background .15s;
-}
-.chip:hover { border-color: var(--accent); }
-.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
-.summary { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; margin-top: 8px; }
-.summary p { margin: 0 0 6px; color: var(--muted); font-size: .9rem; }
-.summary output { display: block; font-weight: 700; font-size: 1.02rem; margin-bottom: 18px; }
+.swatch[aria-pressed="true"] { color: var(--ink); font-weight: 700; }
+.swatch[aria-pressed="true"] i { border-color: var(--ink); }
+.summary { background: var(--ink); color: var(--paper); border-radius: var(--radius); padding: 22px; margin-top: 8px; }
+.summary p { margin: 0 0 6px; color: var(--ink-muted); font-size: .9rem; }
+.summary output { display: block; font-weight: 700; font-size: 1.05rem; margin-bottom: 18px; }
 .summary .row { display: flex; flex-wrap: wrap; gap: 10px; }
-.hint { color: var(--muted); font-size: .85rem; margin: 12px 0 0; min-height: 1.3em; }
+.summary .btn-ghost { color: var(--paper); border-color: var(--ink-line); }
+.summary .btn-ghost:hover { border-color: var(--stone); }
+.hint { color: var(--ink-muted); font-size: .85rem; margin: 12px 0 0; min-height: 1.3em; }
+
+/* Works */
+.tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+.tabs .chip { background: var(--ink-2); border-color: var(--ink-line); color: var(--paper); }
+.tabs .chip:hover { border-color: var(--stone); }
+.tabs .chip[aria-selected="true"] { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+.works { display: grid; gap: 16px; margin-top: 28px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+.work { display: flex; flex-direction: column; gap: 12px; text-decoration: none; min-width: 0; }
+.work figure { position: relative; margin: 0; aspect-ratio: 4/5; border-radius: 18px; overflow: hidden; background: var(--ink-2); border: 1px solid var(--ink-line); }
+.work img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.work:hover img { transform: scale(1.03); }
+.work .src { position: absolute; top: 12px; left: 12px; padding: 6px 10px; border-radius: 999px; font-size: .75rem; font-weight: 700; background: var(--ink); color: var(--paper); }
+.work .cap { font-size: .95rem; color: var(--ink-muted); }
+.work:hover .cap { color: var(--paper); }
+.works-empty {
+  grid-column: 1 / -1; border: 1px dashed var(--ink-line); border-radius: var(--radius);
+  padding: 40px 24px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px;
+}
+.works-empty p { margin: 0; color: var(--ink-muted); max-width: 52ch; }
+.works-empty .row { display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* Steps */
 .steps { display: grid; gap: 16px; margin-top: 48px; counter-reset: s; }
 @media (min-width: 900px) { .steps { grid-template-columns: repeat(3, 1fr); } }
-.step { position: relative; }
-.step::before { counter-increment: s; content: "0" counter(s); display: block; font-family: var(--font-display); font-size: 2.6rem; color: transparent; -webkit-text-stroke: 1px var(--accent-2); margin-bottom: 18px; line-height: 1; }
+.step::before { counter-increment: s; content: "0" counter(s); display: block; font-family: var(--font-display); font-size: 2.6rem; color: transparent; -webkit-text-stroke: 1px var(--stone-ink); margin-bottom: 18px; line-height: 1; }
+.step b { color: var(--ink); }
 
 /* FAQ */
 .faq { margin-top: 40px; display: grid; gap: 12px; max-width: 820px; }
-details { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 0 22px; transition: border-color .15s; }
-details[open] { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); }
+details { background: var(--ink-2); border: 1px solid var(--ink-line); border-radius: 18px; padding: 0 22px; transition: border-color .15s; }
+details[open] { border-color: var(--stone); }
 summary { cursor: pointer; list-style: none; padding: 20px 0; font-weight: 700; display: flex; justify-content: space-between; gap: 16px; }
 summary::-webkit-details-marker { display: none; }
-summary::after { content: "+"; font-family: var(--font-display); color: var(--accent-2); transition: transform .2s; flex: none; }
+summary::after { content: "+"; font-family: var(--font-display); color: var(--stone); transition: transform .2s; flex: none; }
 details[open] summary::after { transform: rotate(45deg); }
-details p { margin: 0 0 20px; color: var(--muted); }
+details p { margin: 0 0 20px; color: var(--ink-muted); }
+details a { color: var(--paper); }
 
 /* Contacts */
-.contact { border-radius: 32px; padding: 40px 22px; text-align: center; background: linear-gradient(135deg, color-mix(in srgb, var(--bg-glow-a) 70%, var(--surface)), color-mix(in srgb, var(--bg-glow-b) 70%, var(--surface))); border: 1px solid var(--line); }
+.contact { border-radius: 32px; padding: 40px 22px; text-align: center; background: var(--paper); color: var(--ink); }
 @media (min-width: 720px) { .contact { padding: 72px 48px; } }
-.contact .lead { margin-inline: auto; color: #d5d3ee; }
-.links { display: grid; gap: 12px; max-width: 760px; margin: 36px auto 0; text-align: left; }
-@media (min-width: 720px) { .links { grid-template-columns: repeat(3, 1fr); } }
+.contact .lead { margin-inline: auto; color: var(--paper-muted); }
+.contact .eyebrow { color: var(--stone-ink); }
+.contact .dot { color: var(--stone-ink); }
+.links { display: grid; gap: 12px; max-width: 900px; margin: 36px auto 0; text-align: left; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
 a.link {
   display: flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 0;
   padding: 18px 20px; border-radius: 20px; text-decoration: none;
-  background: color-mix(in srgb, var(--bg) 55%, transparent); border: 1px solid color-mix(in srgb, #fff 14%, transparent);
-  transition: border-color .15s, transform .15s, background .15s;
+  background: var(--ink); color: var(--paper); border: 1px solid var(--ink);
+  transition: transform .15s, border-color .15s;
 }
-a.link:hover { border-color: #fff; transform: translateY(-2px); background: color-mix(in srgb, var(--bg) 75%, transparent); }
+a.link:hover { transform: translateY(-2px); border-color: var(--stone); }
+a.link.main { background: linear-gradient(180deg, var(--stone-hi), var(--stone-lo)); color: var(--ink); border-color: var(--stone-lo); }
+a.link.main .handle { color: color-mix(in srgb, var(--ink) 75%, transparent); }
+.link > div { min-width: 0; }
 .link .name { font-family: var(--font-display); font-weight: 500; }
-.link .handle { display: block; font-size: .85rem; color: #c9c6e8; margin-top: 2px; }
-.link .arrow { font-size: 1.2rem; }
+.link .handle { display: block; font-size: .85rem; color: var(--ink-muted); margin-top: 2px; overflow-wrap: anywhere; }
+.link .arrow { font-size: 1.2rem; flex: none; }
 
-footer { padding: 40px 0 56px; color: var(--muted); font-size: .85rem; }
+footer { padding: 40px 0 56px; color: var(--ink-muted); font-size: .85rem; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
 
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
@@ -221,17 +263,17 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
 </head>
 <body>
 
-
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#top">BND<span class="dot">.</span>FORM</a>
     <nav class="menu" aria-label="Разделы">
       <a href="#about">О нас</a>
       <a href="#builder">Ремешки</a>
+      <a href="#works">Работы</a>
       <a href="#order">Как заказать</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn btn-primary btn-sm" href="https://t.me/bndform" target="_blank" rel="noopener">Заказать</a>
+    <a class="btn btn-primary btn-sm" href="https://t.me/bndformmanager" target="_blank" rel="noopener">Заказать</a>
   </div>
 </header>
 
@@ -241,10 +283,10 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
       <div>
         <p class="eyebrow">Ремешки для WHOOP 5.0 и MG</p>
         <h1>Твой WHOOP.<br><em>Твоя форма.</em></h1>
-        <p class="lead">Ремешки CoreKnit, SuperKnit и SuperKnit Luxe для WHOOP 5.0 и MG, 23 цвета. Выбираешь модель и цвет, мы оформляем заказ в Telegram.</p>
+        <p class="lead">Ремешки CoreKnit, SuperKnit и SuperKnit Luxe для WHOOP 5.0 и MG, 23 цвета. Выбираешь ремешок и цвет, а заказ оформляет наш менеджер в Telegram.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#builder">Выбрать ремешок</a>
-          <a class="btn btn-ghost" href="https://t.me/bndform" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn btn-ghost" href="https://t.me/bndformmanager" target="_blank" rel="noopener">Написать менеджеру</a>
         </div>
         <div class="hero-social">
           <a href="https://www.instagram.com/bnd.form" target="_blank" rel="noopener">Instagram</a>
@@ -271,7 +313,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
     <div class="wrap">
       <p class="eyebrow reveal">О нас</p>
       <h2 class="reveal">Не просто ремешок<span class="dot">.</span></h2>
-      <p class="lead reveal">Трекер ты носишь 24/7 — на тренировке, в офисе и во сне. Он должен выглядеть так, как хочешь ты.</p>
+      <p class="lead reveal">Трекер ты носишь 24/7: на тренировке, в офисе и во сне. Он должен выглядеть так, как хочешь ты.</p>
       <div class="features">
         <article class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18M3 12h18"/></svg></div>
@@ -281,7 +323,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
         <article class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="5"/><rect x="5" y="8" width="14" height="8" rx="3"/></svg></div>
           <h3>WHOOP 5.0 и MG</h3>
-          <p>Ремешки сделаны под актуальные модели трекера и крепятся так же, как оригинальные.</p>
+          <p>Каждый ремешок подходит к обеим актуальным моделям трекера и крепится так же, как оригинальный.</p>
         </article>
         <article class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 .9-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.9z"/></svg></div>
@@ -290,32 +332,32 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
         </article>
         <article class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3.5-7.1L21 3v6h-6"/></svg></div>
-          <h3>На связи</h3>
-          <p>Заказ, вопросы и фото готовых работ — напрямую в Telegram и Instagram, без посредников.</p>
+          <h3>Свой менеджер</h3>
+          <p>Заказ и вопросы ведёт менеджер в Telegram: @bndformmanager.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="block" id="builder" style="padding-top:0">
+  <section class="block light" id="builder">
     <div class="wrap">
       <p class="eyebrow reveal">Ремешки</p>
       <h2 class="reveal">Выбери ремешок<span class="dot">.</span></h2>
-      <p class="lead reveal">CoreKnit, SuperKnit и SuperKnit Luxe для WHOOP 5.0 и MG. Выбери тип и цвет, и мы подготовим текст заказа для Telegram.</p>
+      <p class="lead reveal">CoreKnit, SuperKnit и SuperKnit Luxe. Выбери тип и цвет и нажми «Заказать»: откроется чат с менеджером, текст заказа уже будет готов.</p>
 
       <div class="config">
         <figure class="stage" id="preview">
           <img id="band-img" src="img/bands/superknit-graphite.jpg" alt="SuperKnit Graphite" width="900" height="900">
-          <span class="tag t1" id="tag-model">WHOOP 5.0</span>
+          <span class="tag t1">WHOOP 5.0 · MG</span>
           <span class="tag t2" id="tag-band">SuperKnit · Graphite</span>
         </figure>
 
         <div>
           <div class="opt-group">
-            <h3>Модель <b id="lbl-model">WHOOP 5.0</b></h3>
-            <div class="chips" data-group="model">
-              <button class="chip" type="button" data-value="WHOOP 5.0" aria-pressed="true">WHOOP 5.0</button>
-              <button class="chip" type="button" data-value="WHOOP MG" aria-pressed="false">WHOOP MG</button>
+            <h3>Подходит для</h3>
+            <div class="fits">
+              <span class="fit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>WHOOP 5.0</span>
+              <span class="fit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>WHOOP MG</span>
             </div>
           </div>
 
@@ -329,36 +371,46 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
           </div>
 
           <div class="opt-group">
-            <h3>Цвет <b id="lbl-color">Graphite</b> <span id="lbl-count" style="font-weight:500;text-transform:none;letter-spacing:0"></span></h3>
+            <h3>Цвет <b id="lbl-color">Graphite</b> <span class="count" id="lbl-count"></span></h3>
             <div class="swatches" id="swatches"></div>
           </div>
 
           <div class="summary">
             <p>Твой заказ</p>
-            <output id="order-text">WHOOP 5.0 · SuperKnit · Graphite</output>
+            <output id="order-text">SuperKnit · Graphite</output>
             <div class="row">
-              <a class="btn btn-primary" id="send" href="https://t.me/bndform" target="_blank" rel="noopener">Отправить в Telegram</a>
-              <button class="btn btn-ghost" type="button" id="copy">Скопировать</button>
+              <a class="btn btn-primary" id="send" href="https://t.me/bndformmanager" target="_blank" rel="noopener">Заказать</a>
+              <button class="btn btn-ghost" type="button" id="copy">Скопировать текст</button>
             </div>
-            <p class="hint" id="hint" role="status"></p>
+            <p class="hint" id="hint" role="status">Откроется чат с менеджером @bndformmanager.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="block" id="order" style="padding-top:0">
+  <section class="block" id="works">
+    <div class="wrap">
+      <p class="eyebrow reveal">Наши работы</p>
+      <h2 class="reveal">Из TikTok и Instagram<span class="dot">.</span></h2>
+      <p class="lead reveal">Ремешки, которые мы уже собрали для клиентов. Нажми на работу, чтобы открыть пост или видео.</p>
+      <div class="tabs" role="tablist" aria-label="Разделы работ" id="works-tabs"></div>
+      <div class="works" id="works-grid" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <section class="block light" id="order">
     <div class="wrap">
       <p class="eyebrow reveal">Как заказать</p>
       <h2 class="reveal">Три шага<span class="dot">.</span></h2>
       <div class="steps">
         <article class="card step reveal">
           <h3>Выбери</h3>
-          <p>Выбери модель WHOOP, тип ремешка (CoreKnit, SuperKnit или SuperKnit Luxe) и цвет в каталоге выше.</p>
+          <p>Тип ремешка (CoreKnit, SuperKnit или SuperKnit Luxe) и цвет в каталоге выше. Все ремешки подходят к WHOOP 5.0 и MG.</p>
         </article>
         <article class="card step reveal">
-          <h3>Напиши нам</h3>
-          <p>Отправь заказ в Telegram <b>@bndform</b> или в директ Instagram. Подтвердим детали, стоимость и сроки.</p>
+          <h3>Нажми «Заказать»</h3>
+          <p>Откроется чат с менеджером <b>@bndformmanager</b>. Он подтвердит детали, стоимость и сроки.</p>
         </article>
         <article class="card step reveal">
           <h3>Получи</h3>
@@ -368,30 +420,30 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
     </div>
   </section>
 
-  <section class="block" id="faq" style="padding-top:0">
+  <section class="block" id="faq">
     <div class="wrap">
       <p class="eyebrow reveal">FAQ</p>
       <h2 class="reveal">Частые вопросы<span class="dot">.</span></h2>
       <div class="faq">
         <details class="reveal">
           <summary>Подойдёт ли ремешок к моему WHOOP?</summary>
-          <p>Ремешки BND.FORM рассчитаны на WHOOP 5.0 и WHOOP MG. Если у тебя другая модель — напиши нам, подскажем.</p>
+          <p>Все ремешки в каталоге подходят к WHOOP 5.0 и WHOOP MG. Если у тебя другая модель, напиши менеджеру, подскажем.</p>
         </details>
         <details class="reveal">
           <summary>Сколько стоит и сколько ждать?</summary>
-          <p>Цена и срок зависят от материала и сложности кастома. Напиши в Telegram с выбранной комбинацией — назовём точную стоимость и дату готовности.</p>
+          <p>Цена и срок зависят от ремешка. Напиши менеджеру <a href="https://t.me/bndformmanager" target="_blank" rel="noopener">@bndformmanager</a> с выбранной комбинацией, он назовёт точную стоимость и дату.</p>
         </details>
         <details class="reveal">
           <summary>Чем отличаются CoreKnit, SuperKnit и SuperKnit Luxe?</summary>
-          <p>CoreKnit — ремешок с гладкой вязкой, 3 цвета. SuperKnit — рельефная вязка, 12 цветов. SuperKnit Luxe — тот же SuperKnit с полированными деталями цвета золота или титана, 8 вариантов. Не можешь выбрать — напиши нам, пришлём живые фото.</p>
+          <p>CoreKnit — ремешок с гладкой вязкой, 3 цвета. SuperKnit — рельефная вязка, 12 цветов. SuperKnit Luxe — тот же SuperKnit с полированными деталями цвета золота или титана, 8 вариантов. Не можешь выбрать — напиши менеджеру, пришлём живые фото.</p>
         </details>
         <details class="reveal">
           <summary>Как подобрать размер?</summary>
-          <p>Измерь обхват запястья мягкой лентой или ниткой и укажи его в сообщении — подгоним длину.</p>
+          <p>Измерь обхват запястья мягкой лентой или ниткой и укажи его в сообщении менеджеру — подгоним длину.</p>
         </details>
         <details class="reveal">
           <summary>Где посмотреть готовые работы?</summary>
-          <p>В нашем <a href="https://www.instagram.com/bnd.form" target="_blank" rel="noopener">Instagram</a> и <a href="https://www.tiktok.com/@bnd.form" target="_blank" rel="noopener">TikTok</a>.</p>
+          <p>В разделе <a href="#works">«Наши работы»</a> выше, а также в нашем <a href="https://www.instagram.com/bnd.form" target="_blank" rel="noopener">Instagram</a> и <a href="https://www.tiktok.com/@bnd.form" target="_blank" rel="noopener">TikTok</a>.</p>
         </details>
       </div>
     </div>
@@ -400,10 +452,14 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
   <section class="block" id="contacts" style="padding-top:0">
     <div class="wrap">
       <div class="contact reveal">
-        <p class="eyebrow" style="color:#fff">Контакты</p>
+        <p class="eyebrow">Контакты</p>
         <h2>Будь в форме<span class="dot">.</span></h2>
-        <p class="lead">Новые цвета, готовые работы и заказы — в наших соцсетях.</p>
+        <p class="lead">Заказы принимает менеджер. Новые цвета и готовые работы — в наших соцсетях.</p>
         <div class="links">
+          <a class="link main" href="https://t.me/bndformmanager" target="_blank" rel="noopener">
+            <div><span class="name">Менеджер</span><span class="handle">@bndformmanager</span></div>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
           <a class="link" href="https://t.me/bndform" target="_blank" rel="noopener">
             <div><span class="name">Telegram</span><span class="handle">@bndform</span></div>
             <span class="arrow" aria-hidden="true">→</span>
@@ -431,6 +487,8 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
 
 <script>
 (() => {
+  const MANAGER = "bndformmanager";
+
   // [name exactly as on whoop.com, swatch background, photo file in img/bands/]
   const BANDS = {
     "CoreKnit": [
@@ -463,12 +521,26 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
       ["Dune with Gold",          "linear-gradient(45deg, #c2b59e 50%, #c9a24a 50%)", "superknit-luxe-dune-with-gold"],
     ],
   };
-  const state = { model: "WHOOP 5.0", type: "SuperKnit", color: "Graphite" };
-  const $ = id => document.getElementById(id);
-  const img = $("band-img"), out = $("order-text"), hint = $("hint"), sw = $("swatches");
 
-  const text = () => `${state.model} · ${state.type} · ${state.color}`;
-  const message = () => `Здравствуйте! Хочу заказать ремешок: ${text()}. Обхват запястья: `;
+  // Our works. Add an entry per post: { img: "img/works/<file>.jpg", url: "<post link>", src: "TikTok" | "Instagram", title: "<caption>" }
+  const WORKS = {
+    "Искусство": [],
+    "Футбол": [],
+    "Общее": [],
+  };
+
+  const state = { type: "SuperKnit", color: "Graphite", works: "Искусство" };
+  const $ = id => document.getElementById(id);
+  const img = $("band-img"), out = $("order-text"), hint = $("hint"), sw = $("swatches"), send = $("send");
+
+  const text = () => `${state.type} · ${state.color}`;
+  const message = () => `Здравствуйте! Хочу заказать ремешок для WHOOP: ${text()}.`;
+  const managerLink = () => `https://t.me/${MANAGER}?text=${encodeURIComponent(message())}`;
+
+  function updateOrder() {
+    out.textContent = text();
+    send.href = managerLink();
+  }
 
   function showColor(band) {
     const [name, , file] = band;
@@ -483,8 +555,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
       img.src = src;
       img.alt = `${state.type} ${name}`;
     }
-    out.textContent = text();
-    hint.textContent = "";
+    updateOrder();
   }
 
   const plural = (n, one, few, many) =>
@@ -504,19 +575,13 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
     showColor(list.find(b => b[0] === state.color) || list[0]);
   }
 
-  document.querySelectorAll("[data-group]").forEach(group => {
-    const key = group.dataset.group;
-    group.addEventListener("click", e => {
-      const btn = e.target.closest("button[data-value]");
-      if (!btn) return;
-      group.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
-      state[key] = btn.dataset.value;
-      $("lbl-" + key).textContent = btn.dataset.value;
-      if (key === "model") $("tag-model").textContent = btn.dataset.value;
-      if (key === "type") renderSwatches();
-      out.textContent = text();
-      hint.textContent = "";
-    });
+  document.querySelector('[data-group="type"]').addEventListener("click", e => {
+    const btn = e.target.closest("button[data-value]");
+    if (!btn) return;
+    e.currentTarget.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+    state.type = btn.dataset.value;
+    $("lbl-type").textContent = btn.dataset.value;
+    renderSwatches();
   });
 
   renderSwatches();
@@ -529,16 +594,51 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
     catch { return false; }
   }
 
-  document.getElementById("copy").addEventListener("click", async () => {
-    hint.textContent = (await copy()) ? "Текст заказа скопирован." : "Не удалось скопировать — выдели текст выше вручную.";
+  $("copy").addEventListener("click", async () => {
+    hint.textContent = (await copy()) ? "Текст заказа скопирован." : "Не удалось скопировать. Выдели текст выше вручную.";
   });
 
-  document.getElementById("send").addEventListener("click", async () => {
+  send.addEventListener("click", async () => {
     const ok = await copy();
-    hint.textContent = ok ? "Текст заказа скопирован — вставь его в чат с @bndform." : "Напиши нам в Telegram выбранную комбинацию.";
+    hint.textContent = ok
+      ? "Открываем чат с @bndformmanager. Если текст не подставился, он уже скопирован: просто вставь его."
+      : "Открываем чат с @bndformmanager. Напиши выбранный ремешок и цвет.";
   });
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  // Works
+  const tabs = $("works-tabs"), grid = $("works-grid");
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function renderWorks() {
+    tabs.querySelectorAll("button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.value === state.works)));
+    const list = WORKS[state.works];
+    if (!list.length) {
+      grid.innerHTML = `<div class="works-empty">
+        <p>Работы из раздела «${esc(state.works)}» скоро появятся здесь. Пока их можно посмотреть в наших соцсетях.</p>
+        <div class="row">
+          <a class="btn btn-ghost btn-sm" href="https://www.tiktok.com/@bnd.form" target="_blank" rel="noopener">TikTok</a>
+          <a class="btn btn-ghost btn-sm" href="https://www.instagram.com/bnd.form" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>`;
+      return;
+    }
+    grid.innerHTML = list.map(w => `
+      <a class="work" href="${esc(w.url)}" target="_blank" rel="noopener">
+        <figure><img src="${esc(w.img)}" alt="${esc(w.title)}" loading="lazy"><span class="src">${esc(w.src)}</span></figure>
+        <span class="cap">${esc(w.title)}</span>
+      </a>`).join("");
+  }
+
+  Object.keys(WORKS).forEach(name => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.setAttribute("role", "tab"); b.dataset.value = name;
+    b.textContent = name;
+    b.addEventListener("click", () => { state.works = name; renderWorks(); });
+    tabs.appendChild(b);
+  });
+  renderWorks();
+
+  $("year").textContent = new Date().getFullYear();
 
   const items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
